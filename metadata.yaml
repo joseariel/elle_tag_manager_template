@@ -1,0 +1,5 @@
+homepage: "https://elle.shastic.com"
+documentation: "https://github.com/joseariel/elle_tag_manager_template"
+versions:
+  - sha: 
+    changeNotes: Initial release.
