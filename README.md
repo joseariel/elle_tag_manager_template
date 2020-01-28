@@ -11,10 +11,9 @@
 [![4](http://www.mediafire.com/convkey/1c65/wyga3di059012u5zg.jpg "4")](http://www.mediafire.com/convkey/1c65/wyga3di059012u5zg.jpg "4")
 5. Find the Elle template
   * Click “Discover more tag types in the Community Template Gallery”
+    [![5.1](http://www.mediafire.com/convkey/cde7/xr1djurcbjkje7vzg.jpg "5.1")](http://www.mediafire.com/convkey/cde7/xr1djurcbjkje7vzg.jpg "5.1")
   * Search for “Elle” in the top-left search bar. Then choose the Elle template from the templates list
-  [![5.1](http://www.mediafire.com/convkey/cde7/xr1djurcbjkje7vzg.jpg "5.1")](http://www.mediafire.com/convkey/cde7/xr1djurcbjkje7vzg.jpg "5.1")
-  
-  [![5.2](http://www.mediafire.com/convkey/91ce/a1pj9glt39q3fs3zg.jpg "5.2")](http://www.mediafire.com/convkey/91ce/a1pj9glt39q3fs3zg.jpg "5.2")
+    [![5.2](http://www.mediafire.com/convkey/91ce/a1pj9glt39q3fs3zg.jpg "5.2")](http://www.mediafire.com/convkey/91ce/a1pj9glt39q3fs3zg.jpg "5.2")
 
 6. Configure the Elle Tag
   * Set the "Elle Organization ID" field to the appropriate ID of your organization. Reach out to Shastic to request your organization's ID.
