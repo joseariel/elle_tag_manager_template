@@ -53,20 +53,136 @@ var log = require('logToConsole');
 var injectScript = require('injectScript');
 var queryPermission = require('queryPermission');
 var createQueue = require('createQueue');
+var getQueryParameters = require('getQueryParameters');
+var getUrl = require('getUrl');
+var createArgumentsQueue = require('createArgumentsQueue');
 
-
+const pageHost = getUrl('host');
+const pagePath = getUrl('path');
 const elleOrgId = data.elleOrgId;
-var elle_script_url = "//d4hldqmvpzsy0.cloudfront.net/assets/elle_button.js";
+const elleEnv = getQueryParameters('elleEnv');
+const elle_evid = getQueryParameters('evid');
+var vendor_name;
+var vendor_site_id;
+var elle_script_url = '';
+var segment_scrit_url = "";
+
+if(elleEnv === "sandbox"){
+  segment_scrit_url = "//cdn.segment.com/analytics.js/v1/hSVqY8ADUn4ylWtoQUoF91pUTpo3eXen/analytics.min.js";
+  elle_script_url = "//d4hldqmvpzsy0.cloudfront.net/assets/elle_button_debug.js";
+} else {
+  segment_scrit_url = "//cdn.segment.com/analytics.js/v1/8nUz0UY5YHbfgiL90Gjykt0NusCPCnY9/analytics.min.js";
+  elle_script_url = "//d4hldqmvpzsy0.cloudfront.net/assets/elle_button.js";
+}
+
+const currentVendor = () => {
+  var SHAREONE = 'shareone';
+  var MORTGAGEBOT = 'mortgagebot';
+  var ACCESS_SOFTEK = 'access_softek';
+  var CU_DIRECT = 'cu_direct';
+  
+  var domains_reference = {
+    'ns3web\\.com$': {
+      vendor_name: SHAREONE,
+      vendor_site_id: pageHost
+    },
+    'mortgagewebcenter\\.com$': {
+      vendor_name: MORTGAGEBOT,
+      vendor_site_id: pageHost
+    },
+    'mfmnow\\.com$': {
+      vendor_name: ACCESS_SOFTEK,
+      vendor_site_id: ''
+    },
+    'mobilelending\\-.*(.|-)financialhost\\.org$': {
+      vendor_name: ACCESS_SOFTEK,
+      vendor_site_id: pageHost
+    },
+    'mobilelending\\-.*\\.orpheusdev\\.net$': {
+      vendor_name: ACCESS_SOFTEK,
+      vendor_site_id: pageHost
+    },
+    '\\.cudlautosmart\\.com$': {
+      vendor_name: CU_DIRECT,
+      vendor_site_id: pageHost
+    }
+  };
+  
+  var paths_reference = {
+    '^\\/NSLoan': {
+      vendor_name: SHAREONE,
+        vendor_site_id: pageHost
+    }
+  };
+
+  var current_vendor;
+  
+  for (var host_matcher in domains_reference) {
+    if ( pageHost.match(host_matcher) ) {
+      current_vendor = domains_reference[host_matcher];
+      break; 
+    }
+  }
+
+  if (typeof(current_vendor) == 'undefined') {
+    for (var path_matcher in paths_reference) {
+      if ( pagePath.match(path_matcher) ) {
+        current_vendor = paths_reference[path_matcher];
+        break; 
+      }
+    }
+  }
+  
+  return current_vendor;
+
+};
+
+const extractVendorField = (vendorAttributeName, vendorReference) => {
+  if (!vendorReference) { return; }
+  var vendor_attribute_value;
+  var attr_val = vendorReference[vendorAttributeName];
+  
+  if (typeof(attr_val) === 'function') {
+    vendor_attribute_value = attr_val();
+  } else {
+    vendor_attribute_value = attr_val;
+  }
+  
+  if (vendor_attribute_value){
+    vendor_attribute_value = vendor_attribute_value.toLowerCase();
+  }
+  
+  return vendor_attribute_value;
+};
+
+var vendor_reference = currentVendor();
+var vendor_name = extractVendorField('vendor_name', vendor_reference);
+var vendor_site_id = extractVendorField('vendor_site_id', vendor_reference);
 
 var elle_config = {
   platform_type: "Google Tag Manager",
-  org_id: elleOrgId
+  org_id: elleOrgId,
+  evid: elle_evid,
+  vendor_name: vendor_name,
+  vendor_site_id: vendor_site_id
 };
+
+if (elleEnv === "sandbox") {
+  log('container: Elle Tag');
+  log("container: pageHost: ", pageHost);
+  log("container: pagePath: ", pagePath);
+  log('container: data =', data);
+  log("container: org_id: ", elleOrgId);
+  log("container: vendor_name: ", vendor_name);
+  log("container: vendor_site_id: ", vendor_site_id);
+  log("container: elle_evid: ", elle_evid);
+  log("container: elle_script_url: ", elle_script_url);
+}
 
 const dataLayerPush = createQueue('_elleDataLayer');
 dataLayerPush(elle_config);
 
-let numCallbacks = 1;
+let numCallbacks = 2;
 let hasFailed = false;
 
 const processAsync = (succeeded) => {
@@ -86,6 +202,18 @@ const processAsync = (succeeded) => {
 
 if (queryPermission('inject_script', elle_script_url)){
   injectScript(elle_script_url, processAsync(true), processAsync(false));
+}
+
+if (queryPermission('inject_script', segment_scrit_url)){
+  injectScript(segment_scrit_url, processAsync(true), processAsync(false));
+}
+
+const elle = createArgumentsQueue('elle_analytics_queue', 'elle_analytics_queue.methods');
+if (!!elle_evid) { 
+  elle('identify', elle_evid); 
+}
+if (!!vendor_name && !!vendor_site_id) { 
+  elle('page', { vendor_name: vendor_name, vendor_site_id: vendor_site_id });
 }
 
 
@@ -131,7 +259,15 @@ ___WEB_PERMISSIONS___
               },
               {
                 "type": 1,
-                "string": "https://d4hldqmvpzsy0.cloudfront.net/assets/elle_button_dev.js"
+                "string": "https://d4hldqmvpzsy0.cloudfront.net/assets/elle_button_debug.js"
+              },
+              {
+                "type": 1,
+                "string": "https://cdn.segment.com/analytics.js/v1/hSVqY8ADUn4ylWtoQUoF91pUTpo3eXen/analytics.min.js"
+              },
+              {
+                "type": 1,
+                "string": "https://cdn.segment.com/analytics.js/v1/8nUz0UY5YHbfgiL90Gjykt0NusCPCnY9/analytics.min.js"
               }
             ]
           }
@@ -193,6 +329,84 @@ ___WEB_PERMISSIONS___
                     "boolean": true
                   }
                 ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "elle_analytics_queue"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  }
+                ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "elle_analytics_queue.methods"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  }
+                ]
               }
             ]
           }
@@ -201,6 +415,31 @@ ___WEB_PERMISSIONS___
     },
     "clientAnnotations": {
       "isEditedByUser": true
+    },
+    "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "get_url",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "urlParts",
+          "value": {
+            "type": 1,
+            "string": "any"
+          }
+        },
+        {
+          "key": "queriesAllowed",
+          "value": {
+            "type": 1,
+            "string": "any"
+          }
+        }
+      ]
     },
     "isRequired": true
   }
@@ -247,6 +486,6 @@ setup: "var log = require('logToConsole');\n\nmock('getUrl', (component) => {\n 
 
 ___NOTES___
 
-Created on 1/28/2020, 1:52:18 AM
+Created on 1/29/2020, 10:40:20 PM
 
 
