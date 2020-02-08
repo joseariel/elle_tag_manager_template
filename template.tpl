@@ -92,7 +92,7 @@ const currentVendor = () => {
     },
     'mfmnow\\.com$': {
       vendor_name: ACCESS_SOFTEK,
-      vendor_site_id: ''
+      vendor_site_id: function() { return pagePath.toLowerCase().match('\\/mobilelending\\-(.*)\\/client')[1]; }
     },
     'mobilelending\\-.*(.|-)financialhost\\.org$': {
       vendor_name: ACCESS_SOFTEK,
