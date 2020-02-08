@@ -1,6 +1,8 @@
 homepage: "https://elle.shastic.com"
 documentation: "https://github.com/joseariel/elle_tag_manager_template"
 versions:
+  - sha: e972b7ee19728d161cae10851a98ea23d1e6a8d5
+    changeNotes: Adding regexp to access-softek.
   - sha: e4272da325b033d8766e04f2b13a74095005e73a
     changeNotes: Adding Segment tracking.
   - sha: 6dfc23cc88cca06430a8ece234f193436565e4bc
