@@ -1,3 +1,9 @@
+## 0.0.3 (February 08, 2020)
+  - Merge pull request #7 from joseariel/develop
+  - Merge pull request #6 from joseariel/hotfix-access_softek-vendor
+  - Updating metadata
+  - Adding regexp to access-softek
+
 ## 0.0.2 (January 29, 2020)
   - Merge pull request #4 from joseariel/develop
   - Correcting metadata
