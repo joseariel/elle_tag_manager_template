@@ -1,3 +1,10 @@
+## 0.0.4 (February 14, 2020)
+  - Merge pull request #8 from joseariel/hotfix-description-warning
+  - Updating metadata
+  - Adding Segment warning to the description
+  - Merge branch 'develop' into hotfix-description-warning
+  - Merge branch 'master' into develop
+
 ## 0.0.3 (February 08, 2020)
   - Merge pull request #7 from joseariel/develop
   - Merge pull request #6 from joseariel/hotfix-access_softek-vendor
