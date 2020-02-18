@@ -1,3 +1,13 @@
+## 0.0.5 (February 18, 2020)
+  - Merge branch 'develop'
+  - Merge branch 'master' into develop
+  - Merge branch 'feature-remove-segment' into develop
+  - Updating metadata
+  - Merge branch 'feature-remove-segment' into develop
+  - Removing segment script
+  - Update README.md
+  - Merge branch 'master' into develop
+
 ## 0.0.4 (February 14, 2020)
   - Merge pull request #8 from joseariel/hotfix-description-warning
   - Updating metadata
