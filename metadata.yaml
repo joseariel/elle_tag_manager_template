@@ -1,6 +1,8 @@
 homepage: "https://elle.shastic.com"
 documentation: "https://github.com/joseariel/elle_tag_manager_template"
 versions:
+  - sha: 396d76647d59ec673431cf23806e3fb7c57d293a
+    changeNotes: Removing the Segment script.
   - sha: 0f6f4bda8f796e0695e4712c4febe5ff66694f74
     changeNotes: Adding Segment warning to the description.
   - sha: e972b7ee19728d161cae10851a98ea23d1e6a8d5
