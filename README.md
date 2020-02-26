@@ -1,18 +1,5 @@
 # Elle GTM Template
-## How to add Elle template to the workspace
-1. Go to your current GTM account and workspace that deals with a website where ElleButton will be installed. Use this link: [https://tagmanager.google.com](https://tagmanager.google.com/)
-2. Open Google Tag Manager Dashboard in your workspace and Click On the 'Template' menu
-[![100](http://www.mediafire.com/convkey/2e76/wvvqr5tfxg96359zg.jpg "100")](http://www.mediafire.com/convkey/974f/9yo9i70ak8nf4f9zg.jpg "100")
-3.Click on 'Search Gallery'
-[![200](http://www.mediafire.com/convkey/974f/9yo9i70ak8nf4f9zg.jpg "200")](http://www.mediafire.com/convkey/974f/9yo9i70ak8nf4f9zg.jpg "200")
-4. Click on the Search icon
-[![300](http://www.mediafire.com/convkey/562f/6p8homj0xqxzpruzg.jpg "300")](http://www.mediafire.com/convkey/562f/6p8homj0xqxzpruzg.jpg "300")
-5. Search for “Elle” in the top-left search bar. Then choose the Elle template from the templates list
-[![400](http://www.mediafire.com/convkey/1e46/d79krycs8oeels0zg.jpg "400")](http://www.mediafire.com/convkey/1e46/d79krycs8oeels0zg.jpg "400")
-6. Click the 'Add to workspace' button
-[![500](http://www.mediafire.com/convkey/1be1/lvc7p5w9p208zguzg.jpg "500")](http://www.mediafire.com/convkey/1be1/lvc7p5w9p208zguzg.jpg "500")
-7. Click the 'Add' button
-[![600](http://www.mediafire.com/convkey/1651/1setq2c38wwsvbrzg.jpg "600")](http://www.mediafire.com/convkey/1651/1setq2c38wwsvbrzg.jpg "600")
+Go to your current GTM account and workspace that deals with a website where ElleButton will be installed. Use this link: [https://tagmanager.google.com](https://tagmanager.google.com/)
 
 ## How to use Elle Tag?
 1. Select the "Tags" section on the left menu-bar
@@ -37,4 +24,18 @@
   * Make sure you don't have other changes except the "Elle" tag on the "Workspace Changes" panel. If so please abandon them otherwise they will be published along with the "Elle" tag.
   * Click the "Publish" button
   [![8](http://www.mediafire.com/convkey/b954/z6twwkpzoafuthazg.jpg "8")](http://www.mediafire.com/convkey/b954/z6twwkpzoafuthazg.jpg "8")
+  
+## How to add Elle template to the workspace
+1. Open Google Tag Manager Dashboard in your workspace and Click On the 'Template' menu
+[![100](http://www.mediafire.com/convkey/2e76/wvvqr5tfxg96359zg.jpg "100")](http://www.mediafire.com/convkey/974f/9yo9i70ak8nf4f9zg.jpg "100")
+2.Click on 'Search Gallery'
+[![200](http://www.mediafire.com/convkey/974f/9yo9i70ak8nf4f9zg.jpg "200")](http://www.mediafire.com/convkey/974f/9yo9i70ak8nf4f9zg.jpg "200")
+3. Click on the Search icon
+[![300](http://www.mediafire.com/convkey/562f/6p8homj0xqxzpruzg.jpg "300")](http://www.mediafire.com/convkey/562f/6p8homj0xqxzpruzg.jpg "300")
+4. Search for “Elle” in the top-left search bar. Then choose the Elle template from the templates list
+[![400](http://www.mediafire.com/convkey/1e46/d79krycs8oeels0zg.jpg "400")](http://www.mediafire.com/convkey/1e46/d79krycs8oeels0zg.jpg "400")
+5. Click the 'Add to workspace' button
+[![500](http://www.mediafire.com/convkey/1be1/lvc7p5w9p208zguzg.jpg "500")](http://www.mediafire.com/convkey/1be1/lvc7p5w9p208zguzg.jpg "500")
+6. Click the 'Add' button
+[![600](http://www.mediafire.com/convkey/1651/1setq2c38wwsvbrzg.jpg "600")](http://www.mediafire.com/convkey/1651/1setq2c38wwsvbrzg.jpg "600")
 
