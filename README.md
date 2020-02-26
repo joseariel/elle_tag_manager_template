@@ -25,7 +25,7 @@ Go to your current GTM account and workspace that deals with a website where Ell
   * Click the "Publish" button
   [![8](http://www.mediafire.com/convkey/b954/z6twwkpzoafuthazg.jpg "8")](http://www.mediafire.com/convkey/b954/z6twwkpzoafuthazg.jpg "8")
   
-## How to add Elle template to the workspace
+## How to add Elle template to the workspace (optional)
 1. Open Google Tag Manager Dashboard in your workspace and Click On the 'Template' menu
 [![100](http://www.mediafire.com/convkey/2e76/wvvqr5tfxg96359zg.jpg "100")](http://www.mediafire.com/convkey/974f/9yo9i70ak8nf4f9zg.jpg "100")
 2.Click on 'Search Gallery'
